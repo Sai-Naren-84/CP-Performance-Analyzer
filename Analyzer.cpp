@@ -4,10 +4,24 @@
 
 using namespace std;
 
+/* ================= COLORS ================= */
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define CYAN    "\033[36m"
+#define WHITE   "\033[37m"
+
+/* ================= PERFORMANCE REPORT ================= */
 void Analyzer::showReport(const vector<Problem>& problems) {
 
+    cout << "\n==============================\n";
+    cout << "     PERFORMANCE REPORT      \n";
+    cout << "==============================\n\n";
+
     if (problems.empty()) {
-        cout << "No data loaded.\n";
+        cout << RED << "No data loaded.\n" << RESET;
         return;
     }
 
@@ -23,21 +37,24 @@ void Analyzer::showReport(const vector<Problem>& problems) {
 
     int total = problems.size();
     double successRate = (double)solved / total;
-
     double skillScore = solved ? (double)totalRating / solved : 0;
 
-    cout << "\n===== PERFORMANCE REPORT =====\n";
-    cout << "Total Problems: " << total << endl;
-    cout << "Solved: " << solved << endl;
-    cout << "Unsolved: " << (total - solved) << endl;
-    cout << "Success Rate: " << successRate * 100 << "%\n";
-    cout << "Skill Score: " << skillScore << endl;
+    cout << "Total Problems : " << total << endl;
+    cout << "Solved         : " << solved << endl;
+    cout << "Unsolved       : " << (total - solved) << endl;
+    cout << "Success Rate   : " << successRate * 100 << "%\n";
+    cout << "Skill Score    : " << skillScore << endl;
 }
 
+/* ================= WEAK TOPICS ================= */
 void Analyzer::showWeakTopics(const vector<Problem>& problems) {
 
+    cout << "\n==============================\n";
+    cout << "        WEAK TOPICS          \n";
+    cout << "==============================\n\n";
+
     if (problems.empty()) {
-        cout << "No data loaded.\n";
+        cout << RED << "No data loaded.\n" << RESET;
         return;
     }
 
@@ -48,8 +65,6 @@ void Analyzer::showWeakTopics(const vector<Problem>& problems) {
         if (p.solved == 1)
             solved[p.topic]++;
     }
-
-    cout << "\n===== WEAK TOPICS =====\n";
 
     string weakTopic;
     double worst = 1.0;
@@ -61,9 +76,8 @@ void Analyzer::showWeakTopics(const vector<Problem>& problems) {
 
         double ratio = (double)s / tot;
 
-        cout << t.first << " -> "
-             << ratio * 100 << "% ("
-             << s << "/" << tot << " solved)" << endl;
+        cout << WHITE << t.first << RESET << " -> "
+             << ratio * 100 << "% (" << s << "/" << tot << ")\n";
 
         if (ratio < worst) {
             worst = ratio;
@@ -71,13 +85,18 @@ void Analyzer::showWeakTopics(const vector<Problem>& problems) {
         }
     }
 
-    cout << "\nWeakest Topic: " << weakTopic << endl;
+    cout << RED << "\nWeakest Topic: " << WHITE << weakTopic << RESET << endl;
 }
 
+/* ================= STRONG TOPICS ================= */
 void Analyzer::showStrongTopics(const vector<Problem>& problems) {
 
+    cout << "\n==============================\n";
+    cout << "       STRONG TOPICS         \n";
+    cout << "==============================\n\n";
+
     if (problems.empty()) {
-        cout << "No data loaded.\n";
+        cout << RED << "No data loaded.\n" << RESET;
         return;
     }
 
@@ -89,8 +108,6 @@ void Analyzer::showStrongTopics(const vector<Problem>& problems) {
             solved[p.topic]++;
     }
 
-    cout << "\n===== STRONG TOPICS =====\n";
-
     string strongTopic;
     double best = 0.0;
 
@@ -101,9 +118,8 @@ void Analyzer::showStrongTopics(const vector<Problem>& problems) {
 
         double ratio = (double)s / tot;
 
-        cout << t.first << " -> "
-             << ratio * 100 << "% ("
-             << s << "/" << tot << " solved)" << endl;
+        cout << WHITE << t.first << RESET << " -> "
+             << ratio * 100 << "% (" << s << "/" << tot << ")\n";
 
         if (ratio > best) {
             best = ratio;
@@ -111,51 +127,75 @@ void Analyzer::showStrongTopics(const vector<Problem>& problems) {
         }
     }
 
-    cout << "\nStrongest Topic: " << strongTopic << endl;
+    cout << GREEN << "\nStrongest Topic: " << WHITE << strongTopic << RESET << endl;
 }
 
+/* ================= RECOMMENDATIONS ================= */
 void Analyzer::recommend(const vector<Problem>& problems) {
 
+    cout << "\n==============================\n";
+    cout << "      RECOMMENDATIONS        \n";
+    cout << "==============================\n\n";
+
     if (problems.empty()) {
-        cout << "No data loaded.\n";
+        cout << RED << "No data loaded.\n" << RESET;
         return;
     }
 
-    cout << "\n===== RECOMMENDATIONS =====\n";
+    bool found = false;
 
     for (auto &p : problems) {
         if (p.solved == 0 && p.rating <= 1400) {
             cout << "- " << p.name
                  << " (" << p.rating << ", " << p.topic << ")\n";
+            found = true;
         }
+    }
+
+    if (!found) {
+        cout << "No recommendations found.\n";
     }
 }
 
+/* ================= SEARCH ================= */
 void Analyzer::searchProblem(const vector<Problem>& problems, string key) {
 
+    cout << "\n==============================\n";
+    cout << "        SEARCH RESULTS       \n";
+    cout << "==============================\n\n";
+
     if (problems.empty()) {
-        cout << "No data loaded.\n";
+        cout << RED << "No data loaded.\n" << RESET;
         return;
     }
 
-    cout << "\n===== SEARCH RESULTS =====\n";
+    bool found = false;
 
     for (auto &p : problems) {
         if (p.name.find(key) != string::npos) {
             cout << p.name << " (" << p.rating << ", " << p.topic << ")\n";
+            found = true;
         }
+    }
+
+    if (!found) {
+        cout << "No match found.\n";
     }
 }
 
+/* ================= DATASET SUMMARY ================= */
 void Analyzer::datasetSummary(const vector<Problem>& problems) {
 
+    cout << "\n==============================\n";
+    cout << "      DATASET SUMMARY        \n";
+    cout << "==============================\n\n";
+
     if (problems.empty()) {
-        cout << "No data loaded.\n";
+        cout << RED << "No data loaded.\n" << RESET;
         return;
     }
 
     map<string, int> topicCount;
-    map<string, int> ratingMap;
 
     int maxRating = -1, minRating = 1e9;
     string hardest, easiest;
@@ -175,11 +215,8 @@ void Analyzer::datasetSummary(const vector<Problem>& problems) {
         }
     }
 
-    cout << "\n===== DATASET SUMMARY =====\n";
-    cout << "Total Problems: " << problems.size() << endl;
-    cout << "Total Topics: " << topicCount.size() << endl;
-
-    cout << "Most Frequent Topic: ";
+    cout << "Total Problems : " << problems.size() << endl;
+    cout << "Total Topics   : " << topicCount.size() << endl;
 
     string topTopic;
     int maxCount = 0;
@@ -191,8 +228,7 @@ void Analyzer::datasetSummary(const vector<Problem>& problems) {
         }
     }
 
-    cout << topTopic << " (" << maxCount << " problems)\n";
-
-    cout << "Hardest Problem: " << hardest << endl;
-    cout << "Easiest Problem: " << easiest << endl;
+    cout << "Most Frequent Topic : " << topTopic << endl;
+    cout << "Hardest Problem     : " << hardest << endl;
+    cout << "Easiest Problem     : " << easiest << endl;
 }
