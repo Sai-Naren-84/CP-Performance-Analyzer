@@ -8,6 +8,7 @@ struct Problem {
     string name;
     int rating;
     string topic;
+    int solved;
 };
 
 #endif

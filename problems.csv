@@ -1,11 +1,9 @@
-problem,rating,topic
-Two Sum,800,implementation
-Binary Search,900,binary_search
-BFS Traversal,1200,graphs
-DFS Traversal,1300,graphs
-Coin Change,1600,dp
-Knapsack,1700,dp
-Dijkstra,1800,graphs
-Segment Tree Query,1900,data_structures
-Trie Basics,1500,strings
-Shortest Path,1700,graphs
+name,rating,topic,solved
+Two Sum,800,Arrays,1
+Binary Search,1200,Search,1
+Sliding Window,1300,Arrays,0
+DP Knapsack,1900,DP,0
+Graph BFS,1100,Graphs,1
+Graph DFS,1400,Graphs,0
+Prefix Sum,1000,Arrays,1
+Dijkstra,1600,Graphs,0
