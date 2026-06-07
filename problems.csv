@@ -1,0 +1,11 @@
+problem,rating,topic
+Two Sum,800,implementation
+Binary Search,900,binary_search
+BFS Traversal,1200,graphs
+DFS Traversal,1300,graphs
+Coin Change,1600,dp
+Knapsack,1700,dp
+Dijkstra,1800,graphs
+Segment Tree Query,1900,data_structures
+Trie Basics,1500,strings
+Shortest Path,1700,graphs
