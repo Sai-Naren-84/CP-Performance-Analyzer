@@ -2,16 +2,57 @@
 #define ANALYZER_H
 
 #include <vector>
+#include <string>
 #include "Problem.h"
 
 class Analyzer {
 public:
-    static void showReport(const vector<Problem>& problems);
-    static void showWeakTopics(const vector<Problem>& problems);
-    static void showStrongTopics(const vector<Problem>& problems);
-    static void recommend(const vector<Problem>& problems);
-    static void searchProblem(const vector<Problem>& problems, string key);
-    static void datasetSummary(const vector<Problem>& problems);
+
+    // Core Analytics
+    static void showReport(
+        const std::vector<Problem>& problems
+    );
+
+    static void showWeakTopics(
+        const std::vector<Problem>& problems
+    );
+
+    static void showStrongTopics(
+        const std::vector<Problem>& problems
+    );
+
+    static void recommend(
+        const std::vector<Problem>& problems
+    );
+
+    // Search
+    static void searchProblem(
+        const std::vector<Problem>& problems,
+        std::string key
+    );
+
+    // Dataset Information
+    static void datasetSummary(
+        const std::vector<Problem>& problems
+    );
+
+    static void difficultyDistribution(
+        const std::vector<Problem>& problems
+    );
+
+    // Planning & Reports
+    static void generateStudyPlan(
+        const std::vector<Problem>& problems
+    );
+
+    static void exportReport(
+        const std::vector<Problem>& problems
+    );
+
+    // Rating Analytics
+    static void estimatedRating(
+        const std::vector<Problem>& problems
+    );
 };
 
 #endif

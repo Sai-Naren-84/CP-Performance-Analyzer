@@ -1,9 +1,6 @@
-name,rating,topic,solved
-Two Sum,800,Arrays,1
-Binary Search,1200,Search,1
-Sliding Window,1300,Arrays,0
-DP Knapsack,1900,DP,0
-Graph BFS,1100,Graphs,1
-Graph DFS,1400,Graphs,0
-Prefix Sum,1000,Arrays,1
-Dijkstra,1600,Graphs,0
+name,rating,topic,solved,date
+Two Sum,800,Arrays,1,2026-06-01
+Binary Search,1200,Binary Search,1,2026-06-02
+Dijkstra,1800,Graphs,0,2026-06-03
+Knapsack,1700,DP,1,2026-06-04
+LIS,1600,DP,0,2026-06-05

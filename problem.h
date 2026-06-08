@@ -9,6 +9,7 @@ struct Problem {
     int rating;
     string topic;
     int solved;
+    string date;
 };
 
 #endif

@@ -1,160 +1,165 @@
 # CP Performance Analyzer
 
-## About this project
+A C++ command-line application for analyzing competitive programming practice data from CSV files.
 
-CP Performance Analyzer is a C++ command-line tool that analyzes competitive programming practice data from a CSV file. It helps users understand their progress, strengths, weaknesses, and dataset structure.
-
-The project focuses on simple but meaningful analytics instead of just displaying raw data.
+The tool helps programmers track progress, identify strengths and weaknesses, discover practice gaps, and generate actionable insights from solved and unsolved problems.
 
 ---
 
 ## Features
 
-- Load and analyze CP problem data from CSV
-- Performance report (user-based analytics)
-- Weak topic detection
-- Strong topic detection
-- Problem recommendations
-- Search problems by name
-- Dataset summary (data overview)
-- Interactive terminal-based menu system
+* Load competitive programming datasets from CSV files
+* Generate performance reports
+* Identify strong and weak topics using topic-wise analysis
+* Smart problem recommendations based on current skill level
+* Search problems by name
+* Dataset summary and statistics
+* Difficulty distribution analysis
+* Study plan generation
+* Estimated rating calculation
+* Export analysis reports to a text file
+* Interactive menu-driven interface
 
 ---
 
-## CSV File Format
+## CSV Format
 
-The program reads data in the following format:
+The application expects data in the following format:
 
-name,rating,topic,solved
+```csv
+name,rating,topic,solved,date
+Two Sum,800,Arrays,1,2026-06-01
+Binary Search,1200,Binary Search,1,2026-06-02
+Dijkstra,1800,Graphs,0,2026-06-03
+Knapsack,1700,DP,1,2026-06-04
+```
 
-### Example:
+### Fields
 
-Two Sum,800,Arrays,1  
-Binary Search,1200,Search,1  
-Sliding Window,1300,Arrays,0  
-DP Knapsack,1900,DP,0  
-Graph BFS,1100,Graphs,1  
-Graph DFS,1400,Graphs,0  
-
-### Field Description:
-- name: Problem name
-- rating: Difficulty rating of the problem
-- topic: Category of the problem (Arrays, DP, Graphs, etc.)
-- solved: 1 if solved, 0 if not solved
+| Column | Description                  |
+| ------ | ---------------------------- |
+| name   | Problem name                 |
+| rating | Problem difficulty           |
+| topic  | Problem category             |
+| solved | 1 = solved, 0 = unsolved     |
+| date   | Date of attempt (YYYY-MM-DD) |
 
 ---
 
-## How to Run
+## Available Analytics
 
-### Step 1: Compile the program
+### Performance Report
 
-Run the following command in the project folder:
+Provides:
 
+* Total problems
+* Solved problems
+* Unsolved problems
+* Success rate
+* Average solved difficulty
+
+### Weak Topic Analysis
+
+Identifies topics that require additional practice using performance-based scoring.
+
+### Strong Topic Analysis
+
+Highlights topics where the user consistently performs well.
+
+### Smart Recommendations
+
+Suggests unsolved problems near the user's current skill level.
+
+### Dataset Summary
+
+Displays:
+
+* Total problems
+* Total topics
+* Most frequent topic
+* Hardest problem
+* Easiest problem
+
+### Difficulty Distribution
+
+Shows how problems are distributed across different difficulty ranges.
+
+### Study Plan Generator
+
+Creates a simple practice roadmap based on current performance.
+
+### Estimated Rating
+
+Estimates the user's current rating level from solved problem history.
+
+### Export Report
+
+Exports key analysis results into a text report.
+
+---
+
+## Building the Project
+
+Compile using:
+
+```bash
 g++ main.cpp Analyzer.cpp -o app
+```
 
----
+Run:
 
-### Step 2: Run the program
+### Windows
 
-On Windows:
-
+```bash
 app.exe
+```
 
 or
 
+```bash
 ./app
+```
 
-On Linux / Mac:
+### Linux / macOS
 
+```bash
 ./app
+```
 
 ---
 
-## How to Use
+## Example Use Cases
 
-1. Run the program
-2. Load a CSV file (example: problems.csv)
-3. Choose an option from the menu
-4. View analysis results
-
----
-
-## Menu Options
-
-1. Load CSV file  
-2. Performance Report  
-3. Weak Topics  
-4. Strong Topics  
-5. Recommendations  
-6. Search Problem  
-7. Dataset Summary  
-8. Help  
-9. Exit  
+* Track competitive programming progress
+* Analyze practice history
+* Find weak areas before contests
+* Plan future problem-solving sessions
+* Maintain a personal CP performance dataset
 
 ---
 
-## What Each Feature Means
+## Technologies Used
 
-### Performance Report
-Shows user performance based on solved problems:
-- total problems
-- solved and unsolved count
-- success rate
-- skill score (average rating of solved problems)
-
----
-
-### Weak Topics
-Shows topics where performance is low based on success rate.
+* C++
+* STL (Vector, Map, String, Algorithms)
+* File Handling
+* Object-Oriented Programming
+* CSV Data Processing
 
 ---
 
-### Strong Topics
-Shows topics where performance is high based on success rate.
+## Future Improvements
+
+* Weekly and monthly performance tracking
+* Progress trends using dates
+* Contest performance analytics
+* Advanced recommendation system
+* Data visualization support
 
 ---
 
-### Recommendations
-Suggests unsolved problems based on difficulty level.
+## Author
 
----
+Sai Naren
 
-### Dataset Summary
-Shows structure of dataset:
-- total problems
-- total topics
-- most frequent topic
-- hardest problem
-- easiest problem
-
-This section is not about user performance, but about understanding the dataset itself.
-
----
-
-## How to Create CSV File
-
-If you don’t already have a CSV file:
-
-1. Open Excel or Google Sheets
-2. Create columns: name, rating, topic, solved
-3. Enter your problem data
-4. Export as .csv file
-5. Place it in the project folder
-6. Enter filename when prompted in the program
-
----
-
-
-## Tech Stack
-
-C++  
-Standard Template Library (STL)  
-File Handling  
-Command Line Interface  
-
----
-
-
-## Note
-
-This project is a basic analytics tool for competitive programming practice tracking. It is designed to be simple, interactive, and extendable for future improvements like better recommendation systems or platform integrations.
+GitHub: https://github.com/Sai-Naren-84
